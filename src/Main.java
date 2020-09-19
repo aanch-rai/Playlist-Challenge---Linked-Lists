@@ -65,11 +65,12 @@ public class Main {
         ListIterator<Song> it = playlist.listIterator();
 
         while (playlist_loop) {
-            System.out.println("\n Enter 1 to skip song");
+            System.out.println("\nEnter 1 to skip song");
             System.out.println("Enter 2 to go to previous song");
             System.out.println("Enter 3 to Replay the current song");
             System.out.println("Enter 4 to view all songs in playlist:");
             System.out.println("Enter 5 to quit");
+            System.out.println("Enter 6 to remove current song from record");
 
             int play_list_choice = scanner.nextInt();
             scanner.nextLine();
@@ -138,6 +139,16 @@ public class Main {
                     playlist_loop = false;
                     break;
 
+                case 6: if(playlist.size()>0){
+                    it.remove();
+                    if(it.hasNext()){
+                        System.out.println("Now playing:"+it.next().toString());
+                    }else if (it.hasPrevious()){
+                        System.out.println("Now playing: "+it.previous().toString() );
+                    }
+                }
+                break;
+
                 default:
                     System.out.println("Wrong input");
                     break;
@@ -164,7 +175,7 @@ public class Main {
             System.out.println("Sorry! Album does'nt exist");
             return;
         }
-        System.out.println("Enter how may songs you wish to add from this album");
+        System.out.println("How may songs do you wish to add from this album");
         int count = scanner.nextInt();
         scanner.nextLine();
 
